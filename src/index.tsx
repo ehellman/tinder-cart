@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider as StyletronProvider } from "styletron-react";
 import { Client as Styletron } from "styletron-engine-atomic";
+import { Provider } from "react-redux";
+import store from "./store";
+
 const engine = new Styletron();
 
 function App() {
@@ -15,8 +18,10 @@ function App() {
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
-  <StyletronProvider value={engine}>
-    <App />
-  </StyletronProvider>,
+  <Provider store={store}>
+    <StyletronProvider value={engine}>
+      <App />
+    </StyletronProvider>
+  </Provider>,
   rootElement
 );
